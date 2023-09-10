@@ -1,0 +1,108 @@
+.countdown-container {
+    position: absolute;
+    display: grid;
+    justify-content: center;
+    align-items: middle;
+}
+
+.timer-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+}
+
+.minutes,
+.seconds {
+    font-size: 2.5em;
+    margin: 10px;
+}
+
+
+
+.minutes-label,
+.seconds-label {
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+@media (max-width: 800px) {
+
+    .countdown-container {
+        max-width: 90%;
+    }
+
+    .days-container,
+    .hours-container,
+    .minutes-container,
+    .seconds-container {
+        font-size: 0.8em;
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.logo {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 200px;
+}
+
+.bell {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+}
+
+.hide {
+    display: none;
+}
+.a11yHide {
+    opacity: 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.ml12 {
+    font-weight: 200;
+    font-size: 1.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+}
+
+.ml12 .letter {
+    display: inline-block;
+    line-height: 1em;
+}
+.heading {
+    position: absolute;
+    top: 17.5%;
+    font-size: 48px;
+}
+
+.audioInput {
+    background-color: rgba(0,0,0,0.5);
+    color: #fee;
+    height: 42px;
+    padding: 10px;
+}
+
+/* #numberForm {
+    position: absolute;
+    top: 5%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+}
+
+#numberInput {
+    width: 150px;
+} */
