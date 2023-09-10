@@ -44,11 +44,12 @@ To customize this splash screen:
 1. Modify the content within the `<body>` tag to add your own message or branding elements.
 2. Adjust the CSS styles in the provided `reset.css` and `index.css` files to match your desired appearance.
 3. Using the control panel,
-    1. Enable the countdown timer using control panel.
-    2. Enable heading text from control panel.
+    1. Enable the countdown timer using the control panel.
+    2. Enable heading text from the control panel.
     3. Enable rotation of background images based on the chosen theme.
     4. Enable radio based on the chosen genre.
     5. Change the audio visualizer
+    6. Generate Videos from the visualization
 
 ## License
 
