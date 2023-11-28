@@ -3,6 +3,7 @@ let fft;
 let particles = [];
 let img;
 let timerAvl = false;
+let TIME_IN_MINS = 5;
 
 /**
  * Particle class
@@ -129,6 +130,9 @@ function draw() {
 }
 
 function mouseClicked() {
+    if(!song){
+        return;
+    }
     if (song.isPlaying()) {
         song.pause()
         // song.noLoop()
@@ -137,8 +141,9 @@ function mouseClicked() {
         song.play()
         // song.loop()
         loop()
+        document.querySelector('.audioInput').classList.add('hide');
         if (!timerAvl) {
-            countDownClock(5, 'minutes');
+            countDownClock(TIME_IN_MINS, 'minutes');
             document.querySelector('.countdown-container').classList.remove('hide');
             timerAvl = true;
         }

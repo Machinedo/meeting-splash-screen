@@ -10,8 +10,10 @@
     <title>Splash Screen for Meetings</title>
     <link rel="shortcut icon" href="/assets/favicon.ico" />
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/favicon.ico">
     <link rel="stylesheet" href="/assets/reset.css">
     <link rel="stylesheet" href="/assets/index.css">
+    <link rel="manifest" href="/manifest.json">
 </head>
 
 <body>
@@ -38,6 +40,19 @@
             <div class="seconds-label">secs</div>
         </article>
     </section>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/assets/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
 </body>
 
 </html>
