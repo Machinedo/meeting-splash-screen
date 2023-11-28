@@ -1,0 +1,15 @@
+{
+  "name": "meeting-splash-screen",
+  "version": "1.0.0",
+  "description": "spash screen for meetings",
+  "main": "index.html",
+  "repository": "https://github.com/Machinedo/meeting-splash-screen",
+  "author": "sbmadhav@gmail.com",
+  "license": "MIT",
+  "scripts": {
+    "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.1.0"
+  }
+}
