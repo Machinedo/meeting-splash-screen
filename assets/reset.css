@@ -16,6 +16,8 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -40,13 +42,6 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Courier New', Courier, monospace;
 }
 
 body {
