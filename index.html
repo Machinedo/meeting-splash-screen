@@ -25,12 +25,31 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <script defer src="/assets/script.js"></script>
-    <section class="heading ml12">We'll be starting soon!</section>
-    <aside class="control-panel">
-        <!-- <form id="numberForm">
-            <input type="number" id="numberInput" required min="1" max="60" placeholder="Countdown timer">
+    <section id="heading-text" class="heading ml12"></section>
+    <aside class="control-panel hide">
+        <form id="numberForm">
+            <div>
+                <label for="timer-count">Timer</label>
+                <input type="number" id="timer-count" required min="1" max="60" />
+            </div>
+            <div>
+                <label for="text-input">Show Text</label>
+                <input type="checkbox" id="text-input" required />
+            </div>
+            <div>
+                <label for="timer-input">Show Timer</label>
+                <input type="checkbox" id="timer-input" required />
+            </div>
+            <div>
+                <label for="linear-wave">Show Linear Wave</label>
+                <input type="checkbox" id="linear-wave" required />
+            </div>
+            <div>
+                <label for="text-content">Text to Show</label>
+                <input type="text" id="text-content" required placeholder="We'll be starting soon!" />
+            </div>
             <button type="submit">➤</button>
-        </form> -->
+        </form>
     </aside>
     <section class="countdown-container hide">
         <article class="timer-container">

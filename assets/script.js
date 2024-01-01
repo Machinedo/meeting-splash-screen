@@ -3,7 +3,16 @@ let fft;
 let particles = [];
 let img;
 let timerAvl = false;
-let TIME_IN_MINS = 5;
+/**
+ * Control panel
+ */
+let isTextShown = true;
+let isTimerShown = true;
+let isLinearWave = false;
+let isSplEffectsEnabled = true;
+const TIME_IN_MINS = 5;
+const IMG_URL = "https://source.unsplash.com/random/3840x2160?winter,scenary&auto=format&fit=crop&w=750&q=80";
+const SHOW_TEXT = "We'll be starting soon!";
 
 /**
  * Particle class
@@ -125,9 +134,7 @@ function preload() {
    * Loads an image from the specified URL.
    * @type {p5.Image}
    */
-  img = loadImage(
-    "https://source.unsplash.com/random/3840x2160?nature,winter&auto=format&fit=crop&w=750&q=80"
-  );
+  img = loadImage(IMG_URL);
 
   // song = loadSound("/assets/Veens - Girl.mp3")
   // img = loadImage("https://images.unsplash.com/photo-1482686115713-0fbcaced6e28?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=747")
@@ -284,105 +291,114 @@ function draw() {
    * @returns {number[]} An array of waveform values.
    */
   var wave = fft.waveform();
-
-  /**
-   * Draws two sets of shapes to create a ring effect.
-   */
-  for (var t = -1; t <= 1; t += 2) {
-    /**
-     * Begins a new shape for the ring.
-     */
-    beginShape();
-
-    /**
-     * Draws a series of vertices to form the ring shape.
-     */
-    for (var i = 0; i <= 180; i += 0.5) {
-      /**
-       * Maps the index value to the range of the waveform array.
-       * @param {number} value - The value to be mapped.
-       * @param {number} start1 - The lower bound of the input range.
-       * @param {number} stop1 - The upper bound of the input range.
-       * @param {number} start2 - The lower bound of the output range.
-       * @param {number} stop2 - The upper bound of the output range.
-       * @returns {number} The mapped value.
-       */
-      var index = floor(map(i, 0, 180, 0, wave.length - 1));
-
-      /**
-       * Maps the waveform value to a radius value for the ring.
-       * @param {number} value - The value to be mapped.
-       * @param {number} start1 - The lower bound of the input range.
-       * @param {number} stop1 - The upper bound of the input range.
-       * @param {number} start2 - The lower bound of the output range.
-       * @param {number} stop2 - The upper bound of the output range.
-       * @returns {number} The mapped value.
-       */
-      var r = map(wave[index], -1, 1, 150, 350);
-
-      /**
-       * Calculates the x-coordinate of a point on the ring.
-       * @param {number} angle - The angle in degrees.
-       * @returns {number} The x-coordinate.
-       */
-      var x = r * sin(i) * t;
-
-      /**
-       * Calculates the y-coordinate of a point on the ring.
-       * @param {number} angle - The angle in degrees.
-       * @returns {number} The y-coordinate.
-       */
-      var y = r * cos(i);
-
-      /**
-       * Adds a vertex to the shape.
-       * @param {number} x - The x-coordinate of the vertex.
-       * @param {number} y - The y-coordinate of the vertex.
-       */
-      vertex(x, y);
+  if(isLinearWave){
+    for (var i = 0; i < width; i++) {
+      let index = floor(map(i,0,width,0,wave.length));
+      let x = i - 1720;
+      let y = wave[index] * 300 + height/8 - 170;
+      point(x,y);
     }
-
+  } else {
     /**
-     * Ends the shape for the ring.
+     * Draws two sets of shapes to create a ring effect.
      */
-    endShape();
+    for (var t = -1; t <= 1; t += 2) {
+      /**
+       * Begins a new shape for the ring.
+       */
+      beginShape();
+
+      /**
+       * Draws a series of vertices to form the ring shape.
+       */
+      for (var i = 0; i <= 180; i += 0.5) {
+        /**
+         * Maps the index value to the range of the waveform array.
+         * @param {number} value - The value to be mapped.
+         * @param {number} start1 - The lower bound of the input range.
+         * @param {number} stop1 - The upper bound of the input range.
+         * @param {number} start2 - The lower bound of the output range.
+         * @param {number} stop2 - The upper bound of the output range.
+         * @returns {number} The mapped value.
+         */
+        var index = floor(map(i, 0, 180, 0, wave.length - 1));
+
+        /**
+         * Maps the waveform value to a radius value for the ring.
+         * @param {number} value - The value to be mapped.
+         * @param {number} start1 - The lower bound of the input range.
+         * @param {number} stop1 - The upper bound of the input range.
+         * @param {number} start2 - The lower bound of the output range.
+         * @param {number} stop2 - The upper bound of the output range.
+         * @returns {number} The mapped value.
+         */
+        var r = map(wave[index], -1, 1, 150, 350);
+
+        /**
+         * Calculates the x-coordinate of a point on the ring.
+         * @param {number} angle - The angle in degrees.
+         * @returns {number} The x-coordinate.
+         */
+        var x = r * sin(i) * t;
+
+        /**
+         * Calculates the y-coordinate of a point on the ring.
+         * @param {number} angle - The angle in degrees.
+         * @returns {number} The y-coordinate.
+         */
+        var y = r * cos(i);
+
+        /**
+         * Adds a vertex to the shape.
+         * @param {number} x - The x-coordinate of the vertex.
+         * @param {number} y - The y-coordinate of the vertex.
+         */
+        vertex(x, y);
+      }
+
+      /**
+       * Ends the shape for the ring.
+       */
+      endShape();
+    }
   }
-
-  /**
-   * Creates a new particle object.
-   * @constructor
-   */
-  var p = new Particle();
-
-  /**
-   * Adds the particle to the array of particles.
-   */
-  particles.push(p);
-
-  /**
-   * Updates and displays each particle in the array.
-   */
-  for (var i = particles.length - 1; i >= 0; i--) {
+  if (isSplEffectsEnabled && !isLinearWave){
     /**
-     * Checks if the particle is within the canvas boundaries.
-     * @returns {boolean} True if the particle is within the boundaries, false otherwise.
+     * Creates a new particle object.
+     * @constructor
      */
-    if (!particles[i].edges()) {
-      /**
-       * Updates the particle's position and behavior based on the amplitude value.
-       * @param {boolean} condition - The condition to determine the particle's behavior.
-       */
-      particles[i].update(amp > 230);
+    var p = new Particle();
 
+    /**
+     * Adds the particle to the array of particles.
+     */
+    particles.push(p);
+
+    /**
+     * Updates and displays each particle in the array.
+     */
+    for (var i = particles.length - 1; i >= 0; i--) {
       /**
-       * Displays the particle on the canvas.
+       * Checks if the particle is within the canvas boundaries.
+       * @returns {boolean} True if the particle is within the boundaries, false otherwise.
        */
-      particles[i].show();
-    } else {
-      /**
-       * Removes the particle from the array if it is outside the canvas boundaries.
-       */
-      particles.splice(i, 1);
+      if (!particles[i].edges()) {
+        /**
+         * Updates the particle's position and behavior based on the amplitude value.
+         * @param {boolean} condition - The condition to determine the particle's behavior.
+         */
+        particles[i].update(amp > 230);
+
+        /**
+         * Displays the particle on the canvas.
+         */
+        particles[i].show();
+      } else {
+        /**
+         * Removes the particle from the array if it is outside the canvas boundaries.
+         */
+        particles.splice(i, 1);
+      }
     }
   }
 }
@@ -431,13 +447,13 @@ function mouseClicked() {
     /**
      * Checks if the timer is available.
      */
-    if (!timerAvl) {
+    if (!timerAvl && isTimerShown) {
       /**
        * Starts the countdown clock.
        * @param {number} time - The time in minutes for the countdown.
        * @param {string} unit - The unit of time for the countdown.
        */
-      countDownClock(TIME_IN_MINS, "minutes");
+      countDownClock(TIME_IN_MINS, "minutes", isTimerShown);
 
       /**
        * Shows the countdown container.
@@ -451,37 +467,34 @@ function mouseClicked() {
     }
   }
 }
-
+/**================================================================================================**/
 /**
  * Starts a countdown clock with the specified number and format.
  * @param {number} number - The number for the countdown.
  * @param {string} format - The format of the countdown ("seconds" or "minutes").
  */
-const countDownClock = (number = 100, format = "seconds") => {
+const countDownClock = (number = 100, format = "seconds", isTimerShown) => {
+  if(!isTimerShown){
+    return;
+  }
   const d = document;
   const minutesElement = d.querySelector(".minutes");
   const secondsElement = d.querySelector(".seconds");
   let countdown;
-  convertFormat(format);
-
   /**
-   * Converts the countdown format and starts the timer.
-   * @param {string} format - The format of the countdown ("seconds" or "minutes").
+   * Displays the time left in the countdown.
+   * @param {number} seconds - The number of seconds left in the countdown.
    */
-  function convertFormat(format) {
-    switch (format) {
-      case "seconds":
-        return timer(number);
-      case "minutes":
-        return timer(number * 60);
-    }
-  }
-
+  const displayTimeLeft = (seconds) => {
+    minutesElement.textContent = Math.floor(((seconds % 86400) % 3600) / 60);
+    secondsElement.textContent =
+      seconds % 60 < 10 ? `0${seconds % 60}` : seconds % 60;
+  };
   /**
    * Starts the countdown timer.
    * @param {number} seconds - The number of seconds for the countdown.
    */
-  function timer(seconds) {
+  const timer = (seconds) => {
     const now = Date.now();
     const then = now + seconds * 1000;
 
@@ -496,23 +509,30 @@ const countDownClock = (number = 100, format = "seconds") => {
 
       displayTimeLeft(secondsLeft);
     }, 1000);
-  }
-
+  };
   /**
-   * Displays the time left in the countdown.
-   * @param {number} seconds - The number of seconds left in the countdown.
+   * Converts the countdown format and starts the timer.
+   * @param {string} format - The format of the countdown ("seconds" or "minutes").
    */
-  function displayTimeLeft(seconds) {
-    minutesElement.textContent = Math.floor(((seconds % 86400) % 3600) / 60);
-    secondsElement.textContent =
-      seconds % 60 < 10 ? `0${seconds % 60}` : seconds % 60;
-  }
+  const convertFormat = (format) => {
+    switch (format) {
+      case "seconds":
+        return timer(number);
+      case "minutes":
+        return timer(number * 60);
+    }
+  };
+  convertFormat(format);
 };
 
+/**================================================================================================**/
 /**
  * Animates the text in the specified element.
  */
-(function animateText() {
+function animateText(showText) {
+  if(!showText) return;
+  
+  document.getElementById('heading-text').innerHTML = SHOW_TEXT;
   /**
    * The element containing the text to be animated.
    * @type {HTMLElement}
@@ -552,7 +572,9 @@ const countDownClock = (number = 100, format = "seconds") => {
       duration: 1100,
       delay: (el, i) => 100 + 30 * i,
     });
-})();
+};
+
+animateText(isTextShown);
 
 /*
 document.getElementById("numberForm").addEventListener("submit", function (event) {
