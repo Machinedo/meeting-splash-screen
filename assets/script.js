@@ -101,34 +101,52 @@ class Particle {
  * Preloads assets and performs initialization before the sketch starts.
  */
 function preload() {
+
+  const inputSelect = createSelect();
+  inputSelect.option('cinematic-chillhop', './assets/music/cinematic-chillhop.mp3');
+  inputSelect.option('forest-lullaby', './assets/music/forest-lullaby.mp3');
+  inputSelect.option('in-the-forest-ambience', './assets/music/in-the-forest-ambience.mp3');
+  inputSelect.option('just-relax', './assets/music/just-relax.mp3');
+  inputSelect.option('lofi-chill', './assets/music/lofi-chill.mp3');
+  inputSelect.option('onceagain', './assets/music/onceagain.mp3');
+  inputSelect.option('rainbow-after-rain', './assets/music/rainbow-after-rain.mp3');
+  
+  // song = loadSound(inputSelect.value());
+  // song.setPath('./assets/music/onceagain.mp3', ()=>{console.log('set path onchange');});
+  
+  inputSelect.changed(() => {
+    const selectedValue = inputSelect.value();
+    if (!song) {
+      song = loadSound(selectedValue);
+    } else {
+      song.setPath(selectedValue);
+    }
+  }); 
+
   /**
    * Creates a file input element and loads the selected sound file.
    * @param {File} file - The selected file.
    */
-  inputbtn = createFileInput((file) => {
-    song = loadSound(file);
-  });
+
+  // const inputbtn = createFileInput((file) => {
+  //   song = loadSound(file);
+  // });
 
   /**
    * Retrieves the first input element and adds a label for accessibility.
    */
   var inputELE = document.getElementsByTagName("input")[0];
-  const label = document.createElement("label");
-  label.setAttribute("for", "audioInput");
-  label.textContent = "Choose a file";
-  label.classList.add("a11yHide");
-  inputELE.parentNode.insertBefore(label, inputELE.nextSibling);
+  // const label = document.createElement("label");
+  // label.setAttribute("for", "audioInput");
+  // label.textContent = "Choose a file";
+  // label.classList.add("a11yHide");
+  // inputELE.parentNode.insertBefore(label, inputELE.nextSibling);
 
   /**
    * Positions the file input element on the screen.
    */
-  inputbtn.position(windowWidth / 2 - 120, 15);
 
-  /**
-   * Sets the ID and class of the input element.
-   */
-  inputELE.setAttribute("id", "audioInput");
-  inputELE.classList.add("audioInput");
+  inputSelect.position(windowWidth / 2 - 120, 15);
 
   /**
    * Loads an image from the specified URL.
@@ -442,7 +460,7 @@ function mouseClicked() {
     /**
      * Hides the audio input element.
      */
-    document.querySelector(".audioInput").classList.add("hide");
+    // document.querySelector(".audioInput").classList.add("hide");
 
     /**
      * Checks if the timer is available.
