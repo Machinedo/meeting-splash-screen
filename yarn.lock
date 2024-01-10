@@ -6,3 +6,8 @@ prettier@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/prettier/-/prettier-3.1.0.tgz"
   integrity sha512-TQLvXjq5IAibjh8EpBIkNKxO749UEWABoiIZehEPiY4GNpVdhaFKqSTu+QrlU6D2dPAfubRmtJTi4K4YkQ5eXw==
+
+uglify-js@^3.17.4:
+  version "3.17.4"
+  resolved "https://registry.npmjs.org/uglify-js/-/uglify-js-3.17.4.tgz"
+  integrity sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==

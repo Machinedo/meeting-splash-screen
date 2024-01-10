@@ -7,9 +7,11 @@
   "author": "sbmadhav@gmail.com",
   "license": "MIT",
   "scripts": {
-    "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\""
+    "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\"",
+    "uglify": "uglifyjs -c -m -- ./assets/script.js > ./assets/scripts.min.js"
   },
   "devDependencies": {
-    "prettier": "^3.1.0"
+    "prettier": "^3.1.0",
+    "uglify-js": "^3.17.4"
   }
 }
