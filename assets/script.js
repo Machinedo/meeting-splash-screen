@@ -6,7 +6,7 @@ let timerAvl = false;
 /**
  * Control panel
  */
-let isTextShown = false;
+let isTextShown = true;
 let isTimerShown = true;
 let isLinearWave = false;
 let isSplEffectsEnabled = true;

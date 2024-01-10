@@ -169,6 +169,14 @@
    cursor: pointer;
    opacity: .75;
  }
+
+ .hamburger.isactive {
+  opacity: 1;
+ }
+
+ .hamburger.isactive:hover {
+  opacity: 0.75;
+ }
  
  .hamburger .line{
    width: 50px;
