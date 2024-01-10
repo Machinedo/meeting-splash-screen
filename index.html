@@ -25,32 +25,43 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <script defer src="/assets/script.js"></script>
-    <section id="heading-text" class="heading ml12"></section>
-    <aside class="control-panel hide">
-        <form id="numberForm">
-            <div>
-                <label for="timer-count">Timer</label>
-                <input type="number" id="timer-count" required min="1" max="60" />
-            </div>
-            <div>
-                <label for="text-input">Show Text</label>
-                <input type="checkbox" id="text-input" required />
-            </div>
-            <div>
-                <label for="timer-input">Show Timer</label>
-                <input type="checkbox" id="timer-input" required />
-            </div>
-            <div>
-                <label for="linear-wave">Show Linear Wave</label>
-                <input type="checkbox" id="linear-wave" required />
-            </div>
-            <div>
-                <label for="text-content">Text to Show</label>
-                <input type="text" id="text-content" required placeholder="We'll be starting soon!" />
-            </div>
-            <button type="submit">➤</button>
-        </form>
-    </aside>
+    <section id="heading-text" class="heading ml12 hide"></section>
+    <div class="container">
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <menu class="navbar">
+            <aside class="control-panel">
+                <form id="numberForm">
+                    <div>
+                        <label for="text-input">Show Text</label>
+                        <input type="checkbox" id="text-input" />
+                    </div>
+                    <div id="text-content-hldr">
+                        <label for="text-content">Text to Show</label>
+                        <input type="text" id="text-content" value="We'll be starting soon!" />
+                    </div>
+                    <div>
+                        <label for="timer-input">Show Timer</label>
+                        <input type="checkbox" id="timer-input" checked />
+                    </div>
+                    <div id="timer-input-hldr" class=" show-timer-dep">
+                        <label for="timer-count">Timer</label>
+                        <input type="number" id="timer-count" min="1" max="60" value="5" />
+                    </div>
+                    <div>
+                        <label for="linear-wave">Show Linear Wave</label>
+                        <input type="checkbox" id="linear-wave" />
+                    </div>
+                    <div id="music-select-hldr">
+                        <label for="music-select">Choose Music</label>
+                    </div>
+                </form>
+            </aside>
+        </menu>
+    </div>
     <section class="countdown-container hide">
         <article class="timer-container">
             <div class="minutes"></div>

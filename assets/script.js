@@ -6,13 +6,18 @@ let timerAvl = false;
 /**
  * Control panel
  */
-let isTextShown = true;
+let isTextShown = false;
 let isTimerShown = true;
 let isLinearWave = false;
 let isSplEffectsEnabled = true;
 const TIME_IN_MINS = 5;
 const IMG_URL = "https://source.unsplash.com/random/3840x2160?winter,scenary&auto=format&fit=crop&w=750&q=80";
 const SHOW_TEXT = "We'll be starting soon!";
+
+const headerTextEle = document.getElementById('heading-text');
+
+const hamburgerEle = document.getElementsByClassName('hamburger')[0];
+const navbarEle = document.getElementsByClassName('navbar')[0];
 
 /**
  * Particle class
@@ -122,7 +127,8 @@ function preload() {
       song.setPath(selectedValue);
     }
   }); 
-
+  inputSelect.id("music-select");
+  inputSelect.parent('music-select-hldr');
   /**
    * Creates a file input element and loads the selected sound file.
    * @param {File} file - The selected file.
@@ -142,11 +148,6 @@ function preload() {
   // label.classList.add("a11yHide");
   // inputELE.parentNode.insertBefore(label, inputELE.nextSibling);
 
-  /**
-   * Positions the file input element on the screen.
-   */
-
-  inputSelect.position(windowWidth / 2 - 120, 15);
 
   /**
    * Loads an image from the specified URL.
@@ -424,12 +425,12 @@ function draw() {
 /**
  * Handles the mouse click event.
  */
-function mouseClicked() {
+function mouseClicked(evt) {
   /**
    * Checks if the song is available.
    * @returns {void} Returns early if the song is not available.
    */
-  if (!song) {
+  if (!song || evt.target === hamburgerEle || evt.target === navbarEle) {
     return;
   }
 
@@ -471,7 +472,7 @@ function mouseClicked() {
        * @param {number} time - The time in minutes for the countdown.
        * @param {string} unit - The unit of time for the countdown.
        */
-      countDownClock(TIME_IN_MINS, "minutes", isTimerShown);
+      countDownClock(TIME_IN_MINS, isTimerShown);
 
       /**
        * Shows the countdown container.
@@ -491,33 +492,19 @@ function mouseClicked() {
  * @param {number} number - The number for the countdown.
  * @param {string} format - The format of the countdown ("seconds" or "minutes").
  */
-const countDownClock = (number = 100, format = "seconds", isTimerShown) => {
+const countDownClock = (number = 5, isTimerShown) => {
   if(!isTimerShown){
     return;
   }
   const d = document;
   const minutesElement = d.querySelector(".minutes");
   const secondsElement = d.querySelector(".seconds");
-  let countdown;
-  /**
-   * Displays the time left in the countdown.
-   * @param {number} seconds - The number of seconds left in the countdown.
-   */
-  const displayTimeLeft = (seconds) => {
-    minutesElement.textContent = Math.floor(((seconds % 86400) % 3600) / 60);
-    secondsElement.textContent =
-      seconds % 60 < 10 ? `0${seconds % 60}` : seconds % 60;
-  };
-  /**
-   * Starts the countdown timer.
-   * @param {number} seconds - The number of seconds for the countdown.
-   */
-  const timer = (seconds) => {
+  const timer = (minutes) => {
     const now = Date.now();
-    const then = now + seconds * 1000;
+    const thenMS = now + (minutes * 60 * 1000);
 
-    countdown = setInterval(() => {
-      const secondsLeft = Math.round((then - Date.now()) / 1000);
+    let countdown = setInterval(() => {
+      const secondsLeft = Math.round((thenMS - Date.now()) / 1000);
 
       if (secondsLeft <= 0) {
         clearInterval(countdown);
@@ -525,32 +512,22 @@ const countDownClock = (number = 100, format = "seconds", isTimerShown) => {
         return;
       }
 
-      displayTimeLeft(secondsLeft);
+      minutesElement.textContent = Math.floor(((secondsLeft % 86400) % 3600) / 60);
+      secondsElement.textContent =
+      secondsLeft % 60 < 10 ? `0${secondsLeft % 60}` : secondsLeft % 60;
     }, 1000);
   };
-  /**
-   * Converts the countdown format and starts the timer.
-   * @param {string} format - The format of the countdown ("seconds" or "minutes").
-   */
-  const convertFormat = (format) => {
-    switch (format) {
-      case "seconds":
-        return timer(number);
-      case "minutes":
-        return timer(number * 60);
-    }
-  };
-  convertFormat(format);
+
+  timer(number);
 };
 
 /**================================================================================================**/
 /**
  * Animates the text in the specified element.
  */
+headerTextEle.innerHTML = SHOW_TEXT;
 function animateText(showText) {
-  if(!showText) return;
-  
-  document.getElementById('heading-text').innerHTML = SHOW_TEXT;
+  if(!showText) return; 
   /**
    * The element containing the text to be animated.
    * @type {HTMLElement}
@@ -594,19 +571,51 @@ function animateText(showText) {
 
 animateText(isTextShown);
 
-/*
-document.getElementById("numberForm").addEventListener("submit", function (event) {
-    event.preventDefault();
+/**
+ * Hamburger open and close
+ */
 
-    // Get the value from the input field
-    const number = parseInt(document.getElementById("numberInput").value);
+let hamburger = document.querySelector('.hamburger');
+let menu = document.querySelector('.navbar');
+let bod = document.querySelector('.container');
 
-    // Check if the input is a valid number within the specified range
-    if (!isNaN(number) && number >= 0 && number <= 60) {
-        // Display the number on the screen
-        countDownClock(number, 'minutes');
-        document.querySelector('.countdown-container').classList.remove('hide');
-        document.querySelector('#numberForm').classList.add('hide');
-    }
+hamburger.addEventListener('click', function() {
+  hamburger.classList.toggle('isactive');
+  menu.classList.toggle('active');
+
 });
-*/
+
+/**
+ * 
+ */
+const textInpEle = document.getElementById('text-input');
+const timerInpEle = document.getElementById('timer-input');
+const timerInpHldrEle = document.getElementById('timer-input-hldr');
+const textContentEle = document.getElementById('text-content');
+const textContentHldrEle = document.getElementById('text-content-hldr');
+const textShownEle = document.getElementById('heading-text');
+const timerShownEle = document.getElementsByClassName('countdown-container')[0];
+textInpEle.onchange = () => {
+  isTextShown = textInpEle.checked;
+  if(textInpEle.checked) {
+    textShownEle.classList.remove('hide');
+    textContentHldrEle.classList.remove('hide');
+  } else {
+    textShownEle.classList.add('hide');
+    textContentHldrEle.classList.add('hide');
+  }
+};
+timerInpEle.onchange = () => {
+  // isTimerShown = timerInpEle.checked;
+  if(timerInpEle.checked) {
+    timerShownEle.classList.remove('hide');
+    timerInpHldrEle.classList.remove('hide');
+  } else {
+    timerShownEle.classList.add('hide');
+    timerInpHldrEle.classList.add('hide');
+  }
+};
+textContentEle.onchange = () => {
+  headerTextEle. innerHTML = textContentEle.value;
+  animateText(isTextShown)
+};
