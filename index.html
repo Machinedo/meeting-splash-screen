@@ -11,20 +11,20 @@
     <link rel="shortcut icon" href="/assets/favicon.ico" />
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/favicon.ico">
-    <link rel="stylesheet" href="/assets/reset.css">
-    <link rel="stylesheet" href="/assets/index.css">
+    <link rel="stylesheet" href="/assets/styles/reset.css">
+    <link rel="stylesheet" href="/assets/styles/index.css">
     <link rel="manifest" href="/manifest.json">
+    <!-- <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({ pageLanguage: 'en', /* includedLanguages: 'en,es,fr' */ }, 'google_translate_element');
+        }
+      </script> -->
+      <script defer src="/assets/scripts/libs.min.js"></script>
+      <script defer src="/assets/scripts/index.min.js"></script>
 </head>
 
 <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"
-        integrity="sha512-bcfltY+lNLlNxz38yBBm/HLaUB1gTV6I0e+fahbF9pS6roIdzUytozWdnFV8ZnM6cSAG5EbmO0ag0a/fLZSG4Q=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js"
-        integrity="sha512-WzkwpdWEMAY/W8WvP9KS2/VI6zkgejR4/KTxTl4qHx0utqeyVE0JY+S1DlMuxDChC7x0oXtk/ESji6a0lP/Tdg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-    <script defer src="/assets/scripts.min.js"></script>
     <section id="heading-text" class="heading ml12 hide"></section>
     <div class="container">
         <div class="hamburger">
@@ -32,6 +32,7 @@
             <div class="line"></div>
             <div class="line"></div>
         </div>
+        <div id="google_translate_element"></div>
         <menu class="navbar">
             <aside class="control-panel">
                 <form id="numberForm">
