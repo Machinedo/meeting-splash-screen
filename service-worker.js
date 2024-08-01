@@ -19,11 +19,11 @@ const RUNTIME = "runtime";
 
 // A list of local resources we always want to be cached.
 const PRECACHE_URLS = [
-  "index.html",
-  "./",
-  "/",
+  "/index.html",
   "/assets/styles/index.css",
   "/assets/styles/reset.css",
+  "/assets/scripts/index.min.js",
+  "/assets/scripts/libs.min.js",
   "/assets/images/background/Beach-Summer.jpg",
   "/assets/images/background/Beach-Summer2.jpg",
   "/assets/images/background/City-Spring.jpg",
@@ -60,8 +60,6 @@ const PRECACHE_URLS = [
   "/assets/music/lofi-chill.mp3",
   "/assets/music/onceagain.mp3",
   "/assets/music/rainbow-after-rain.mp3",
-  "/assets/scripts/index.min.js",
-  "/assets/scripts/libs.min.js",
   "/assets/favicon.ico"
 ];
 

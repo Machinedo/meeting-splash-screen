@@ -11,7 +11,8 @@ let isTimerShown = true;
 let isLinearWave = false;
 let isSplEffectsEnabled = true;
 const TIME_IN_MINS = 5;
-const IMG_URL = "https://source.unsplash.com/random/3840x2160?winter,scenary&auto=format&fit=crop&w=750&q=80";
+// const IMG_URL = "https://source.unsplash.com/random/3840x2160?summer,scenary&auto=format&fit=crop&w=750&q=80";
+const IMG_URL = "/assets/images/background/Mountain-Summer.jpg";
 const SHOW_TEXT = "We'll be starting soon!";
 
 const headerTextEle = document.getElementById('heading-text');
