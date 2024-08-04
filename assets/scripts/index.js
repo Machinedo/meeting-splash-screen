@@ -115,6 +115,7 @@ function preload() {
   inputSelect.option('just-relax', './assets/music/just-relax.mp3');
   inputSelect.option('lofi-chill', './assets/music/lofi-chill.mp3');
   inputSelect.option('onceagain', './assets/music/onceagain.mp3');
+  inputSelect.option('open-sky', './assets/music/open-sky.mp3');
   inputSelect.option('rainbow-after-rain', './assets/music/rainbow-after-rain.mp3');
   
   // song = loadSound(inputSelect.value());
