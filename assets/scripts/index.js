@@ -128,6 +128,7 @@ function preload() {
     } else {
       song.setPath(selectedValue);
     }
+    song.loop();
   }); 
   inputSelect.id("music-select");
   inputSelect.parent('music-select-hldr');
@@ -208,7 +209,7 @@ function setup() {
   /**
    * Stops the draw loop from continuously executing.
    */
-  noLoop();
+   noLoop();
 }
 
 /**
