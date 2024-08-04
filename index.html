@@ -8,21 +8,21 @@
     <meta name="description"
         content="A splash page that can be used while waiting for a meeting to start, optional setting available in control panel">
     <title>Splash Screen for Meetings</title>
-    <link rel="shortcut icon" href="/assets/favicon.ico" />
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
-    <link rel="apple-touch-icon" href="/assets/favicon.ico">
-    <link rel="stylesheet" href="/assets/styles/reset.css">
-    <link rel="stylesheet" href="/assets/styles/index.css">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/favicon.ico">
+    <link rel="stylesheet" href="assets/styles/reset.css">
+    <link rel="stylesheet" href="assets/styles/index.css">
+    <link rel="manifest" href="manifest.json">
     <!-- <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script type="text/javascript">
         function googleTranslateElementInit() {
           new google.translate.TranslateElement({ pageLanguage: 'en', /* includedLanguages: 'en,es,fr' */ }, 'google_translate_element');
         }
       </script> -->
-      <script defer src="/assets/scripts/libs.min.js"></script>
-      <!-- <script defer src="/assets/scripts/index.min.js"></script> -->
-      <script defer src="/assets/scripts/index.js"></script>
+      <script defer src="assets/scripts/libs.min.js"></script>
+      <!-- <script defer src="assets/scripts/index.min.js"></script> -->
+      <script defer src="assets/scripts/index.js"></script>
 </head>
 
 <body>
@@ -75,7 +75,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js')
+                navigator.serviceWorker.register('service-worker.js')
                     .then(registration => {
                         console.log('Service Worker registered:', registration);
                     })
