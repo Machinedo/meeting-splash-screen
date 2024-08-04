@@ -10,6 +10,7 @@ let isTextShown = true;
 let isTimerShown = true;
 let isLinearWave = false;
 let isSplEffectsEnabled = true;
+let isSongStopped = false;
 const TIME_IN_MINS = 5;
 // const IMG_URL = "https://source.unsplash.com/random/3840x2160?summer,scenary&auto=format&fit=crop&w=750&q=80";
 const IMG_URL = "./assets/images/background/Forrest-Summer.jpg";
@@ -451,7 +452,8 @@ function mouseClicked(evt) {
      */
     noLoop();
   } else {
-    /**
+    if(!isSongStopped){
+      /**
      * Plays the song.
      */
     song.play();
@@ -460,7 +462,8 @@ function mouseClicked(evt) {
      * Restarts the draw loop.
      */
     loop();
-
+    }
+    
     /**
      * Hides the audio input element.
      */
@@ -512,6 +515,8 @@ const countDownClock = (number = 5, isTimerShown) => {
       if (secondsLeft <= 0) {
         clearInterval(countdown);
         d.querySelector(".countdown-container").classList.add("hide");
+        song.stop()
+        isSongStopped = true;
         return;
       }
 
