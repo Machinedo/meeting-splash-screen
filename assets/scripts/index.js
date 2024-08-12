@@ -12,10 +12,37 @@ let isTimerShown = true;
 let isLinearWave = false;
 let isSplEffectsEnabled = true;
 let isSongStopped = false;
-const TIME_IN_MINS = 5;
-// const IMG_URL = "https://source.unsplash.com/random/3840x2160?summer,scenary&auto=format&fit=crop&w=750&q=80";
 const IMG_URL = "./assets/images/background/Forrest-Summer.jpg";
+const TIME_IN_MINS = 5;
+// Define the API URL
+const apiUrl = 'https://api.unsplash.com/photos/random?query=summer,forest&orientation=landscape&content_filter=high&count=1';
+const requestOptions = {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Client-ID c00Hg1_R_NmgzORAwgRNsc4T5l2pAP7kiv0QXhBhjd0',
+  }
+};
+// Make a GET request
+fetch(apiUrl, requestOptions)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    const NEW_IMG = data[0]?.urls?.regular;
+    console.log(NEW_IMG);
+    img2 = loadImage(NEW_IMG);
+    img2.filter(BLUR, 1);
+    image(img2, 0, 0, width + 100, height + 100);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+// const IMG_URL = "https://source.unsplash.com/random/3840x2160?summer,scenary&auto=format&fit=crop&w=750&q=80";
 const SHOW_TEXT = "We'll be starting soon!";
+const SHOW_END_TEXT = "We're starting now!";
 
 const headerTextEle = document.getElementById('heading-text');
 
@@ -509,6 +536,7 @@ const countDownClock = (number = 5, isTimerShown) => {
   const timer = (minutes) => {
     const now = Date.now();
     const thenMS = now + (minutes * 60 * 1000);
+    // const thenMS = now + 2000;
 
     let countdown = setInterval(() => {
       const secondsLeft = Math.round((thenMS - Date.now()) / 1000);
@@ -517,6 +545,8 @@ const countDownClock = (number = 5, isTimerShown) => {
         clearInterval(countdown);
         d.querySelector(".countdown-container").classList.add("hide");
         d.querySelector(".timer-end").classList.remove("hide");
+        headerTextEle.innerHTML = SHOW_END_TEXT;
+        animateText(isTextShown)
         song.stop()
         song2.loop();
         isSongStopped = true;
