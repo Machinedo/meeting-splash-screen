@@ -1,4 +1,5 @@
 let song;
+let song2;
 let fft;
 let particles = [];
 let img;
@@ -121,7 +122,7 @@ function preload() {
   
   // song = loadSound(inputSelect.value());
   // song.setPath('./assets/music/onceagain.mp3', ()=>{console.log('set path onchange');});
-  
+  song2 = loadSound('./assets/music/brands/ascension/timer-end.mp3');
   inputSelect.changed(() => {
     const selectedValue = inputSelect.value();
     if (!song) {
@@ -515,7 +516,9 @@ const countDownClock = (number = 5, isTimerShown) => {
       if (secondsLeft <= 0) {
         clearInterval(countdown);
         d.querySelector(".countdown-container").classList.add("hide");
+        d.querySelector(".timer-end").classList.remove("hide");
         song.stop()
+        song2.loop();
         isSongStopped = true;
         return;
       }

@@ -324,3 +324,7 @@
   top: 0;
   left: 50%;
 }
+
+.timer-end {
+  position: absolute;
+}
