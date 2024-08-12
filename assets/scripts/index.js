@@ -13,7 +13,7 @@ let isLinearWave = false;
 let isSplEffectsEnabled = true;
 let isSongStopped = false;
 const IMG_URL = "./assets/images/background/Forrest-Summer.jpg";
-const TIME_IN_MINS = 5;
+let timeInMins = 5;
 // Define the API URL
 const apiUrl = 'https://api.unsplash.com/photos/random?query=summer,forest&orientation=landscape&content_filter=high&count=1';
 const requestOptions = {
@@ -506,7 +506,7 @@ function mouseClicked(evt) {
        * @param {number} time - The time in minutes for the countdown.
        * @param {string} unit - The unit of time for the countdown.
        */
-      countDownClock(TIME_IN_MINS, isTimerShown);
+      countDownClock(timeInMins, isTimerShown);
 
       /**
        * Shows the countdown container.
@@ -546,7 +546,6 @@ const countDownClock = (number = 5, isTimerShown) => {
         d.querySelector(".countdown-container").classList.add("hide");
         d.querySelector(".timer-end").classList.remove("hide");
         headerTextEle.innerHTML = SHOW_END_TEXT;
-        animateText(isTextShown)
         song.stop()
         song2.loop();
         isSongStopped = true;
@@ -633,6 +632,7 @@ const logoInpEle = document.getElementById('logo-input');
 const logoContentEle = document.getElementsByClassName('logo')[0];
 const textInpEle = document.getElementById('text-input');
 const timerInpEle = document.getElementById('timer-input');
+const timerCountEle = document.getElementById('timer-count');
 const timerInpHldrEle = document.getElementById('timer-input-hldr');
 const textContentEle = document.getElementById('text-content');
 const textContentHldrEle = document.getElementById('text-content-hldr');
@@ -666,6 +666,10 @@ timerInpEle.onchange = () => {
     timerInpHldrEle.classList.add('hide');
   }
 };
+timerCountEle.onchange = () => {
+  timeInMins = parseInt(timerCountEle.value) || 5;
+};
+
 textContentEle.onchange = () => {
   headerTextEle. innerHTML = textContentEle.value;
   animateText(isTextShown)
