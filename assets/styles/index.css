@@ -1,3 +1,10 @@
+.container {
+  height: 100px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  padding: 32px;
+}
 .countdown-container {
     position: absolute;
     display: grid;
@@ -48,10 +55,10 @@
 }
 
 .logo {
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    width: 200px;
+    width: 264px;
+    background-color: #0000005c;
+    padding: 32px;
+    border-radius: 64px;
 }
 
 .bell {

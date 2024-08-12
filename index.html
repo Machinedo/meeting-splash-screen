@@ -26,8 +26,10 @@
 </head>
 
 <body>
-    <section id="heading-text" class="heading ml12 hide"></section>
-    <div class="container">
+    <header class="container">
+        <div class="logo hide">
+            <img src="assets/images/brand-logo.png" alt="logo" width="200">
+        </div>
         <div class="hamburger">
             <div class="line"></div>
             <div class="line"></div>
@@ -37,6 +39,10 @@
         <menu class="navbar">
             <aside class="control-panel">
                 <form id="numberForm">
+                    <div>
+                        <label for="logo-input">Show Logo</label>
+                        <input type="checkbox" id="logo-input" />
+                    </div>
                     <div>
                         <label for="text-input">Show Text</label>
                         <input type="checkbox" id="text-input" />
@@ -63,7 +69,8 @@
                 </form>
             </aside>
         </menu>
-    </div>
+    </header>
+    <section id="heading-text" class="heading ml12 hide"></section>
     <section class="countdown-container hide">
         <article class="timer-container">
             <div class="minutes"></div>

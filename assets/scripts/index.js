@@ -596,6 +596,8 @@ hamburger.addEventListener('click', function() {
 /**
  * 
  */
+const logoInpEle = document.getElementById('logo-input');
+const logoContentEle = document.getElementsByClassName('logo')[0];
 const textInpEle = document.getElementById('text-input');
 const timerInpEle = document.getElementById('timer-input');
 const timerInpHldrEle = document.getElementById('timer-input-hldr');
@@ -611,6 +613,14 @@ textInpEle.onchange = () => {
   } else {
     textShownEle.classList.add('hide');
     textContentHldrEle.classList.add('hide');
+  }
+};
+logoInpEle.onchange = () => {
+  islogoShown = logoInpEle.checked;
+  if(logoInpEle.checked) {
+    logoContentEle.classList.remove('hide');
+  } else {
+    logoContentEle.classList.add('hide');
   }
 };
 timerInpEle.onchange = () => {
