@@ -27,7 +27,7 @@
 
 <body>
     <header class="container">
-        <div class="logo hide">
+        <div class="logo">
             <img src="assets/images/brands/ascension/brand-logo.png" alt="logo" width="200">
         </div>
         <div class="hamburger">
@@ -41,13 +41,13 @@
                 <form id="numberForm">
                     <div>
                         <label for="logo-input">Show Logo</label>
-                        <input type="checkbox" id="logo-input" />
+                        <input type="checkbox" id="logo-input" checked/>
                     </div>
                     <div>
                         <label for="text-input">Show Text</label>
-                        <input type="checkbox" id="text-input" />
+                        <input type="checkbox" id="text-input" checked/>
                     </div>
-                    <div id="text-content-hldr" class="hide">
+                    <div id="text-content-hldr" class="">
                         <label for="text-content">Text to Show</label>
                         <input type="text" id="text-content" value="We'll be starting soon!" />
                     </div>
@@ -56,10 +56,10 @@
                         <input type="checkbox" id="timer-input" checked />
                     </div>
                     <div id="timer-input-hldr" class=" show-timer-dep">
-                        <label for="timer-count">Timer</label>
+                        <label for="timer-count">Timer (mins)</label>
                         <input type="number" id="timer-count" min="1" max="60" value="5" />
                     </div>
-                    <div>
+                    <div class="hide">
                         <label for="linear-wave">Show Linear Wave</label>
                         <input type="checkbox" id="linear-wave" />
                     </div>
@@ -70,7 +70,7 @@
             </aside>
         </menu>
     </header>
-    <section id="heading-text" class="heading ml12 hide"></section>
+    <section id="heading-text" class="heading ml12"></section>
     <section class="countdown-container hide">
         <article class="timer-container">
             <div class="minutes"></div>

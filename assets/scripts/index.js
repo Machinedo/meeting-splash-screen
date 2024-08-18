@@ -138,6 +138,7 @@ class Particle {
 function preload() {
 
   const inputSelect = createSelect();
+  inputSelect.option('Select Music', '');
   inputSelect.option('cinematic-chillhop', './assets/music/cinematic-chillhop.mp3');
   inputSelect.option('forest-lullaby', './assets/music/forest-lullaby.mp3');
   inputSelect.option('in-the-forest-ambience', './assets/music/in-the-forest-ambience.mp3');
@@ -657,7 +658,7 @@ logoInpEle.onchange = () => {
   }
 };
 timerInpEle.onchange = () => {
-  // isTimerShown = timerInpEle.checked;
+  isTimerShown = timerInpEle.checked;
   if(timerInpEle.checked) {
     timerShownEle.classList.remove('hide');
     timerInpHldrEle.classList.remove('hide');
