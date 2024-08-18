@@ -20,9 +20,12 @@
           new google.translate.TranslateElement({ pageLanguage: 'en', /* includedLanguages: 'en,es,fr' */ }, 'google_translate_element');
         }
       </script> -->
+      <script src="https://sdk.scdn.co/spotify-player.js"></script>
       <script defer src="assets/scripts/libs.min.js"></script>
-      <script defer src="assets/scripts/index.min.js"></script>
-      <!-- <script defer src="assets/scripts/index.js"></script> -->
+      <!-- <script defer src="assets/scripts/index.min.js"></script> -->
+
+
+      <script defer src="assets/scripts/index.js"></script>
 </head>
 
 <body>
@@ -66,6 +69,7 @@
                     <div id="music-select-hldr">
                         <label for="music-select">Choose Music</label>
                     </div>
+                    <button id="togglePlay">Toggle Play</button>
                 </form>
             </aside>
         </menu>
