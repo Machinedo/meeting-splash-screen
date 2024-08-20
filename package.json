@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\"",
-    "uglify": "uglifyjs -c -m -- ./assets/scripts/index.js > ./assets/scripts/index.min.js"
+    "uglify": "uglifyjs --compress --mangle --output ./assets/scripts/index.min.js -- ./assets/scripts/particle.js ./assets/scripts/fetchImage.js ./assets/scripts/countdownClock.js ./assets/scripts/animateText.js ./assets/scripts/index.js"
   },
   "devDependencies": {
     "prettier": "^3.1.0",

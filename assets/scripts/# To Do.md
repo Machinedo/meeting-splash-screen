@@ -1,0 +1,24 @@
+# To Do
+
+- [ ] Connect to Google Slides as a widget
+- [ ] Connect to spotify
+- [ ] Connect to unsplash
+- [ ] Change background image every x mins (on the fly)
+- [ ] Change music every x mins (on the fly)
+    - [ ] Get playback controls
+    - [ ] Get the current song
+    - [ ] Get the current artist (if available)
+    - [ ] Get the current album (if available)
+- [ ] Add a widget to display the time
+- [ ] Add a stopwatch widget
+- [ ] Weather widget
+- [ ] Quote widget
+- [ ] News ticker
+- [ ] Better build system
+- [ ] Switch to modern frontend framework
+- [ ] Move the script into a canvas and use WebGL??
+- [ ] Use Rust and WASM to make the app more secure and fast
+- [ ] Make the offline experience better
+- [ ] Make the app more secure
+- [ ] Allow users to share their dashboard with friends
+- [ ] Allow users to manage images and audio files they upload
