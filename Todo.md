@@ -4,7 +4,7 @@
 - [ ] Connect to spotify
 - [ ] Connect to unsplash
 - [ ] Change background image every x mins (on the fly)
-- [ ] Change music every x mins (on the fly)
+- [ ] Change music every x mins (on the fly) / use a playlist
     - [ ] Get playback controls
     - [ ] Get the current song
     - [ ] Get the current artist (if available)
@@ -22,3 +22,11 @@
 - [ ] Make the app more secure
 - [ ] Allow users to share their dashboard with friends
 - [ ] Allow users to manage images and audio files they upload
+- [ ] Allow users to create custom widgets
+- [ ] Allow users to create custom themes
+- [ ] Allow users to create custom layouts
+- [ ] Allow users to create custom animations
+- [ ] Allow users to create custom interactions
+- [ ] Allow users to create custom transitions
+- [ ] Allow users to create custom actions
+- [ ] Allow users to create custom triggers

@@ -1,4 +1,4 @@
-const IMG_URL = "./assets/images/background/Forrest-Summer.jpg";
+const IMG_URL = "./assets/images/background/Mountain-Fall.jpg";
 const TEXT_TO_SHOW = "We'll be starting soon!";
 const END_TEXT_TO_SHOW = "We're starting now!";
 const d = document;
@@ -9,7 +9,7 @@ const logoInpEle = d.getElementById("logo-input");
 const logoContentEle = d.getElementsByClassName("logo")[0];
 const textInpEle = d.getElementById("text-input");
 const timerInpEle = d.getElementById("timer-input");
-const timerCountEle = d.getElementById("timer-count");
+const timerCountEle = d.getElementById("timer-count"); 
 const timerInpHldrEle = d.getElementById("timer-input-hldr");
 const textContentEle = d.getElementById("text-content");
 const textContentHldrEle = d.getElementById("text-content-hldr");
@@ -19,7 +19,7 @@ const hamburger = d.querySelector(".hamburger");
 const menu = d.querySelector(".navbar");
 const bod = d.querySelector(".container");
 const countdownContainer = d.querySelector(".countdown-container");
-const apiUrl =
+const unsplashApiUrl =
   "https://api.unsplash.com/photos/random?query=summer,forest&orientation=landscape&content_filter=high&count=1";
 const requestOptions = {
   method: "GET",
@@ -77,7 +77,7 @@ async function preload() {
   inputSelect.id("music-select");
   inputSelect.parent("music-select-hldr");
 
-  // const unsplashRandomImg = await fetchImage(apiUrl, requestOptions);
+  // const unsplashRandomImg = await fetchImage(unsplashApiUrl, requestOptions);
   const unsplashRandomImg = "";
   /**
    * Loads an image from the specified URL.
