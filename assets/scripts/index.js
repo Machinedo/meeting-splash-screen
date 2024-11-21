@@ -1,4 +1,4 @@
-const IMG_URL = "./assets/images/background/Mountain-Fall.jpg";
+const IMG_URL = "./assets/images/background/Dessert-Winter.jpg";
 const TEXT_TO_SHOW = "We'll be starting soon!";
 const END_TEXT_TO_SHOW = "We're starting now!";
 const d = document;
